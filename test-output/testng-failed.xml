@@ -5,8 +5,10 @@
     <classes>
       <class name="tests.testIFrame">
         <methods>
-          <include name="test"/>
+          <include name="tearDown"/>
           <include name="beforeTest"/>
+          <include name="addNewEmployee"/>
+          <include name="afterTest"/>
         </methods>
       </class> <!-- tests.testIFrame -->
     </classes>
