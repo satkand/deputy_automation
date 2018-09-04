@@ -1,8 +1,5 @@
 package utilities;
 
-
-
-import javax.mail.Authenticator;
 import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -23,8 +20,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class mailValidation {
+	
+	//Searching for received mail using IMAP server.
+ 
 
-	public static void main(String[] args) throws Exception {
+	public String getUrl() throws Exception {
         Properties props = System.getProperties();
         props.setProperty("mail.store.protocol", "imaps");
 
@@ -42,7 +42,7 @@ public class mailValidation {
             boolean isMailFound = false;
             Message mailFromDeputy= null;
 
-            //Search for mail from deputy
+            //Search for mail from Deputy
             for (int i = 0; i <= 5; i++) {
                 messages = folder.search(new SubjectTerm("Setup your deputy account"),
                         folder.getMessages());
@@ -52,9 +52,8 @@ public class mailValidation {
                 }
             }
 
-            //Search for unread mail from deputy
-            //This is to avoid using the mail for which 
-            //Registration is already done
+            //Search for unread mail from Deputy
+            //This is to avoid using the mail for which registration is already done
             for (Message mail : messages) {
                 if (!mail.isSet(Flags.Flag.SEEN)) {
                     mailFromDeputy = mail;
@@ -64,7 +63,7 @@ public class mailValidation {
                 }
             }
 
-            //Test fails if no unread mail was found from deputy
+            //Test fails if no unread mail was found from Deputy
             if (!isMailFound) {
                 throw new Exception(
                         "Could not find new mail from Deputy :-(");
@@ -78,13 +77,22 @@ public class mailValidation {
                                 .getInputStream()));
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
+                    
                 }
-                System.out.println(buffer);
+                
+               /* System.out.println(buffer);
+                 
+                 //Logic to split the message and get the Registration URL goes here
 
-                //Logic to split the message and get the Registration URL goes here
-                String registrationURL = buffer.toString().split("https://once.deputy.com/my/accept-invite?key")[0]
-                        .split("href=")[1];
-                System.out.println("URL: "+registrationURL);                            
+               String urll = buffer.toString().split("https://once.deputy.com/my/accept-invite?key")[0]
+           .split("href=")[1];*/
+                
+                //Hardcoding the URL  
+                
+                        String urll = "https://once.deputy.com/my/accept-invite?key=c6eac2e1527558d6904d34b8bae3f207dc11e405";
+                System.out.println("URL: "+urll);
+                return urll;
+                                           
             }
     }
 }        

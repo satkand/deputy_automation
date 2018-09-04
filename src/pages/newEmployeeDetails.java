@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 //Page Objects of Add new Employee 
 
-public class newEmployeeDetails {
+public class NewEmployeeDetails {
 	
 private static WebElement element = null;
 	
@@ -35,6 +35,10 @@ private static WebElement element = null;
 		return element;
 	}
 	
+	public static WebElement profileCreated(WebDriver driver) {		
+		element = driver.findElement(By.xpath("//*[@id=\"pnlTeamProfileView\"]/div[1]/div[1]/div[2]/div[2]/small"));
+		return element;
+	}
 	
 
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 //Page Objects of Login page
 
-public class loginPage {
+public class LoginPage {
 	
 	private static WebElement element = null;
 	

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 //Page Objects of Home page & Schedule Tab
 
-public class homePage {
+public class HomePage {
 
 private static WebElement element = null;
 	

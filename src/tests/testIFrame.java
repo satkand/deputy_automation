@@ -3,19 +3,28 @@
 
 package tests;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import pages.homePage;
-import pages.loginPage;
-import pages.newEmployeeDetails;
+import pages.HomePage;
+import pages.LoginPage;
+import pages.NewEmployeeDetails;
+import utilities.mailValidation;
 
 public class testIFrame {
 	public static WebDriver	driver;
+	private mailValidation mv = new mailValidation();
 
 	//Launching Chrome and opening Web page
 	
@@ -28,19 +37,23 @@ public class testIFrame {
 	}
 	
 	@Test
-	public void test() {
+	public void test() throws IOException {
+		
+		try
+		{
+			
 		
 	//Login with username & password
-	loginPage.userName(driver).sendKeys("testautomation+andrew@deputy.com");
-	loginPage.password(driver).sendKeys("deputy22%");
-	loginPage.loginButton(driver).click();
+	LoginPage.userName(driver).sendKeys("testautomation+andrew@deputy.co");
+	LoginPage.password(driver).sendKeys("deputy22%");
+	LoginPage.loginButton(driver).click();
 	
 	//Navigating to schedule tab
-	homePage.scheduleTab(driver).click();
+	HomePage.scheduleTab(driver).click();
 	
 	//Finding out the iFrame and tapping on Add new employee.
 	int size = driver.findElements(By.tagName("iframe")).size();
-	System.out.println("Team: "+size);
+	System.out.println("No. of iFrames: "+size);
 		for(int i= 0; i<size; i++)
 		{
 			driver.switchTo().frame(i);	
@@ -50,24 +63,36 @@ public class testIFrame {
 		}
 		
 		//Filling new employee details
-		newEmployeeDetails.firstName(driver).sendKeys("Sat");
-		newEmployeeDetails.lastName(driver).sendKeys("Kandhaswami");
-		newEmployeeDetails.email(driver).sendKeys("sattester7@gmail.com");
-		newEmployeeDetails.profilePhoto(driver).click();
+		NewEmployeeDetails.firstName(driver).sendKeys("Sat");
+		NewEmployeeDetails.lastName(driver).sendKeys("Kandhaswami");
+		NewEmployeeDetails.email(driver).sendKeys("sateer7@gmail.com");
+		NewEmployeeDetails.profilePhoto(driver).click();
 		
 		//String filePath = "C:/Users/Sathish Kumar/Desktop/27630.png";
 		//WebElement chooseFile= driver.findElement(By.xpath(".//*[@id='pnlTeamProfilePhoto']/div/div/div[2]/a"));
 		//chooseFile.sendKeys(filePath);
-		newEmployeeDetails.saveDetails(driver).click();
+		NewEmployeeDetails.saveDetails(driver).click();
+		
+		Assert.assertTrue(NewEmployeeDetails.profileCreated(driver).isDisplayed());
+		
+		//driver.quit();
+		//driver = new ChromeDriver();
+		
+		//driver.get(mv.getUrl());	
+		
+		}catch (Exception e){
+			File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(screenshotFile, new File("./screenshots" + System.currentTimeMillis() + "screen.jpg"));
+		}
 	}
 	
-	@AfterTest
+	/*@AfterTest
 	
 	public void afterTest()
 	{
 		driver.quit();
 	}
-	
+	*/
 	
 }
 

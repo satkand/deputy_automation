@@ -2,23 +2,19 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18180" started-at="2018-09-04T06:11:12Z" finished-at="2018-09-04T06:11:31Z">
+  <suite name="Default suite" duration-ms="6002" started-at="2018-09-04T10:50:43Z" finished-at="2018-09-04T10:50:49Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18180" started-at="2018-09-04T06:11:12Z" finished-at="2018-09-04T06:11:31Z">
+    <test name="Default test" duration-ms="6002" started-at="2018-09-04T10:50:43Z" finished-at="2018-09-04T10:50:49Z">
       <class name="tests.testIFrame">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:tests.testIFrame@1d057a39]" name="beforeTest" is-config="true" duration-ms="5079" started-at="2018-09-04T06:11:12Z" finished-at="2018-09-04T06:11:17Z">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:tests.testIFrame@59f99ea]" name="beforeTest" is-config="true" duration-ms="4583" started-at="2018-09-04T10:50:43Z" finished-at="2018-09-04T10:50:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="test()[pri:0, instance:tests.testIFrame@1d057a39]" name="test" duration-ms="12834" started-at="2018-09-04T06:11:17Z" finished-at="2018-09-04T06:11:30Z">
+        <test-method status="PASS" signature="test()[pri:0, instance:tests.testIFrame@59f99ea]" name="test" duration-ms="1393" started-at="2018-09-04T10:50:47Z" finished-at="2018-09-04T10:50:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:tests.testIFrame@1d057a39]" name="afterTest" is-config="true" duration-ms="235" started-at="2018-09-04T06:11:30Z" finished-at="2018-09-04T06:11:31Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
       </class> <!-- tests.testIFrame -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
