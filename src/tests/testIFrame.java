@@ -15,7 +15,6 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.NewEmployeeDetails;
-import pages.RegistrationPage;
 import utilities.ScreenShot;
 import utilities.mailValidation;
 
@@ -63,10 +62,14 @@ public class testIFrame {
 	}
 	
 	@Test
+	
+	//To click on the confirmation email
 	public void registrationConfirmation() throws Exception{	
 		driver = new ChromeDriver();
 		driver.get(mv.getUrl());		
 	}
+	
+	//To capture failure Screenshots
 	
 	@AfterMethod
 	public void tearDown(ITestResult result){
